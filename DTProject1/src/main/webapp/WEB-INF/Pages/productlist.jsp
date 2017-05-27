@@ -5,6 +5,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="url" %>
 <%@ page isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
 <html>
 <head>
@@ -12,7 +13,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%@ include file="header-admin.jsp" %>
+<%@ include file="header.jsp" %>
 <div class="container">
 
 <table border="thick" align="center" width="400" height="150">
@@ -31,10 +32,19 @@
 <td>${p.price }</td>
 <url:url value="/all/product/viewproduct/${p.id}" var="url"></url:url>
 <td><a href="${url }"><span class="glyphicon glyphicon-info-sign"></span></a>
+        
+   <sec:authorize access="hasRole('ROLE_ADMIN')">
 <url:url value="/admin/product/deleteproduct/${p.id}" var="url1"></url:url>
 <a href="${url1 }"><span class="glyphicon glyphicon-trash"></span></a>
+</sec:authorize>
+
+
+ <sec:authorize access="hasRole('ROLE_ADMIN')">
 <url:url value="/admin/product/editproduct/${p.id}" var="url2"></url:url>
-<a href="${url2 }"><span class="glyphicon glyphicon-pencil"></span></a></td>
+<a href="${url2 }"><span class="glyphicon glyphicon-pencil"></span></a>
+</sec:authorize>
+</td>
+
 </tr>
 </c:forEach>
 </table>

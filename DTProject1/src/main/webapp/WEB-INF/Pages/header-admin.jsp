@@ -15,6 +15,7 @@
 		<!-- Latest compiled JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<title>Navigationbar</title>
+		
 	</head>
 	<body>
 		<nav class="navbar navbar-inverse">
@@ -26,20 +27,25 @@
         			<span class="icon-bar"></span>
       			</button>
 				<div class="navbar-header">
-					<a class="navbar-brand" href="index.jsp">Sports Store</a>
+					<tr><img style="width:30px;height:30px;border:0;margin-top:10px;float:left;"src="<c:url value="/resources/images/logo.png"></c:url>"></tr>
+					
+					<li><tr><a class="navbar-brand" href="index.jsp">Sports Store</a></tr></li>
 				</div>
 				<div class="collapse navbar-collapse" id="collapse-example">
 					<ul class="nav navbar-nav">
-						<url:url value="/pages/home.jsp" var="url"></url:url>
+						<url:url value="home" var="url"></url:url>
 						<li><a href="${url }">Home</a></li>
 						
-						<li><a href="/pages/aboutus.jsp">About Us<span class="sr-only">You are in about us page.</span></a></li>
+						<li><a href="aboutus">About Us<span class="sr-only">You are in about us page.</span></a></li>
 						<url:url value="/admin/product/productform" var="url"></url:url>
 						<li><a href="${url }">Add Product</a></li>
 						<url:url value="/all/product/productlist" var="url"></url:url>
 						<li><a href="${url }">All Product</a></li>
 						<url:url value="/admin/category/categoryform" var="url"></url:url>
 						<li><a href="${url }">Category</a></li>
+						<url:url value="/all/registrationform" var="url"></url:url>
+						<li><a href="${url }">Register</a></li>
+						
       				</ul>
       				<ul class="nav navbar-nav navbar-right">
 						<li><a href="login.jsp">Sign-out<span class="sr-only">go to logout page.</span></a></li>

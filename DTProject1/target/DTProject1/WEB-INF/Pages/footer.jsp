@@ -16,15 +16,15 @@
 	<body>
 	
 	<br><br><br><br><br>
-		<nav class="navbar navbar-inverse">
+	<nav class="navbar navbar-light" style="background-color:cyan;">
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<a class="navbar-brand">
-						<li style="color: peraiah"><span class="glyphicon glyphicon-copyright-mark"> 2017 SportsStore</span></li>
+						<li style="color: venkatesh"><span class="glyphicon glyphicon-copyright-mark"> 2017 SportsStore</span></li>
 					</a>
 				</div>
 				<ul class="nav navbar-brand navbar-right">
-					<li style="color: sushmitha;">bgcollections@outlet.co.in</li>
+					<li style="color: venkatesh;">bgcollections@outlet.co.in</li>
 				</ul>
 			</div>
 		</nav>			

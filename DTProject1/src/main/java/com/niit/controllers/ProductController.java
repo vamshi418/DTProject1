@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Locale.Category;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -32,7 +34,7 @@ public class ProductController
 	
 	@Autowired CategoryService categoryService;
 	
-	@RequestMapping("/")
+	@RequestMapping("/admin/product/productform")
 	public String showPage(@ModelAttribute(value="product") Product product,BindingResult bindingResult,Model model)
 	{
 		model.addAttribute("productList", productService.getAllProducts());
@@ -42,13 +44,13 @@ public class ProductController
 	
 	
 	
-	@RequestMapping("admin/product/productform")
+	/*@RequestMapping("admin/product/productform")
 	public String getProductForm(Model model)
 	{
 		model.addAttribute("product",new Product());
 		model.addAttribute("categoryList", categoryService.getAllCategorys());
 		return "productform";
-	}	
+	}	*/
 	
 /*	=======================saving product Object=====================================*/
 	@RequestMapping("admin/product/saveproduct")
@@ -127,4 +129,15 @@ public class ProductController
 		productService.deleteProduct(id);
 		return "redirect:/all/product/productlist";
 	}
+	@RequestMapping("/all/product/productsByCategory")
+	public String getProductsByCategory(@RequestParam(name="searchCondition") String searchCondition,
+			Model model,HttpSession session){
+	        session.setAttribute("categories",categoryService.getAllCategorys());
+		List<Product> products=productService.getAllProducts();
+		//Assigning list of products to model attribute products
+		model.addAttribute("products",products);
+		model.addAttribute("searchCondition",searchCondition);
+		return "productlist";
+	}
+	
 }

@@ -19,7 +19,7 @@
 		<title>Insert title here</title>
 	</head>
 	<body>
-	<%@ include file="header-admin.jsp" %>
+	<%@ include file="header.jsp" %>
 		<div class="container wrapper">
 			<div class="container">
 				<url:url var="url" value="/admin/product/saveproduct"></url:url>
